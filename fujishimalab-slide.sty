@@ -139,6 +139,38 @@
 % No navigation symbols
 \setbeamertemplate{navigation symbols}{}
 
+% ============================================================
+% Fujishima Lab Beamer Style (追加パッチ)
+% frametitle spacing + subitem formatting
+% ============================================================
+
+\makeatletter
+
+% ---------------------------
+% (A) frametitle 下の余白調整
+% ---------------------------
+\addtobeamertemplate{frametitle}{}{\vspace*{-1em}}
+
+% ---------------------------
+% (B) itemize 第二階層のマーク・フォント設定
+% ---------------------------
+% subitem のマークを "--" に変更
+\setbeamertemplate{itemize subitem}{--}
+
+% 第二階層 itemize を footnotesize に自動変更
+\usepackage{etoolbox}
+\AtBeginEnvironment{itemize}{%
+  \ifnum\@itemdepth=2
+    \footnotesize
+  \fi
+}
+
+\makeatother
+
+% ============================================================
+% End of patch
+% ============================================================
+
 % ==========================================================
 % End of style file
 % ==========================================================
