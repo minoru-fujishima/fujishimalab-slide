@@ -51,13 +51,13 @@
 % Title page design（No top/bottom bars）
 % ==========================================================
 \defbeamertemplate*{title page}{fujishima}{
-    \vspace*{14mm}
+    \vspace*{6mm}  % ← 14mm → 6mm に縮小
 
-    % Title
     {\centering\Huge\bfseries\fjs@title\par}
-    \vspace{8mm}
 
-    % Center green bar (3 mm)
+    \vspace{5mm}   % ← 少し縮小
+
+    % 中央の緑バーはそのまま
     \begin{tikzpicture}[remember picture, overlay]
         \fill[hiroshimaGreen]
             (current page.west)
@@ -65,13 +65,12 @@
             ($(current page.east)+(0,3mm)$);
     \end{tikzpicture}
 
-    \vspace{14mm}
+    \vspace{8mm}   % ← 14mm → 8mm に縮小
 
-    % Author / Institute / Date
     {\centering\Large\fjs@author\par}
-    \vspace{3mm}
+    \vspace{2mm}   % ← 3mm → 2mm
     {\centering\large\fjs@institute\par}
-    \vspace{5mm}
+    \vspace{4mm}   % ← 5mm → 4mm
     {\centering\large\fjs@date\par}
 }
 
