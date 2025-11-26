@@ -1,0 +1,144 @@
+% ==========================================================
+%  fujishimalab-slide.sty
+%  Hiroshima University — Fujishima Laboratory
+%  Custom Beamer Theme for Technical Presentations
+% ==========================================================
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{fujishimalab-slide}[2025/11/27 v1.0 Fujishima Lab Slide Theme]
+
+% ==========================================================
+% Basic packages
+% ==========================================================
+\RequirePackage{luatexja}
+\RequirePackage{luatexja-fontspec}
+\RequirePackage{tikz}
+\usetikzlibrary{calc}
+
+% ==========================================================
+% Fonts (Japanese = Noto Sans CJK JP, English = Latin Modern Sans)
+% ==========================================================
+\setmainjfont{Noto Sans CJK JP}
+\setsansjfont{Noto Sans CJK JP}
+
+\setmainfont{Latin Modern Sans}
+\setsansfont{Latin Modern Sans}
+
+% ==========================================================
+% Colors
+% ==========================================================
+\definecolor{hiroshimaGreen}{RGB}{25,149,65}
+\definecolor{hiroshimaBlue}{RGB}{56,108,175}
+
+% ==========================================================
+% Margins
+% ==========================================================
+\setbeamersize{text margin left=8mm, text margin right=8mm}
+
+% ==========================================================
+% Metadata commands （ユーザ入力）
+% ==========================================================
+\newcommand{\fjslidetitle}[1]{\def\fjs@title{#1}}
+\newcommand{\fjslideauthor}[1]{\def\fjs@author{#1}}
+\newcommand{\fjslideinstitute}[1]{\def\fjs@institute{#1}}
+\newcommand{\fjslidedate}[1]{\def\fjs@date{#1}}
+\newcommand{\fjslideevent}[1]{\def\fjs@event{#1}} % default = blank
+
+% 空欄デフォルト
+\def\fjs@event{}
+
+% ==========================================================
+% Title page design（No top/bottom bars）
+% ==========================================================
+\defbeamertemplate*{title page}{fujishima}{
+    \vspace*{14mm}
+
+    % Title
+    {\centering\Huge\bfseries\fjs@title\par}
+    \vspace{8mm}
+
+    % Center green bar (3 mm)
+    \begin{tikzpicture}[remember picture, overlay]
+        \fill[hiroshimaGreen]
+            (current page.west)
+            rectangle
+            ($(current page.east)+(0,3mm)$);
+    \end{tikzpicture}
+
+    \vspace{14mm}
+
+    % Author / Institute / Date
+    {\centering\Large\fjs@author\par}
+    \vspace{3mm}
+    {\centering\large\fjs@institute\par}
+    \vspace{5mm}
+    {\centering\large\fjs@date\par}
+}
+
+% Disable header/footer for title slide
+\newcommand{\fjsnotitleheader}{
+    \setbeamertemplate{headline}{}
+    \setbeamertemplate{footline}{}
+}
+
+% ==========================================================
+% Normal slide design (2nd page and onward)
+% ==========================================================
+
+% frametitle text color
+\setbeamercolor{frametitle}{fg=black,bg=white}
+
+% frametitle definition
+\setbeamertemplate{frametitle}{
+    \vspace*{0mm}
+
+    {\Large\bfseries\insertframetitle}
+
+    % Blue + Green bars below title (height = 3mm)
+    \begin{tikzpicture}[remember picture, overlay]
+        % Blue (3mm)
+        \fill[hiroshimaBlue]
+            ($(current page.north west)+(0,-10mm)$)
+            rectangle
+            ($(current page.north west)+(3mm,-13mm)$);
+
+        % Green (height 3mm), starting at 6mm
+        \fill[hiroshimaGreen]
+            ($(current page.north west)+(6mm,-10mm)$)
+            rectangle
+            ($(current page.north east)+(0,-13mm)$);
+    \end{tikzpicture}
+
+    \vspace*{0mm}
+}
+
+% Footer (green bar + date / event / page number)
+\setbeamertemplate{footline}{
+    \begin{tikzpicture}[remember picture, overlay]
+        % Green bar (3 mm)
+        \fill[hiroshimaGreen]
+            (current page.south west)
+            rectangle
+            ($(current page.south east)+(0,3mm)$);
+
+        % White footer text
+        \node[anchor=west, text=white, font=\scriptsize]
+            at ($(current page.south west)+(2mm,1.5mm)$)
+            {\fjs@date};
+
+        \node[anchor=center, text=white, font=\scriptsize]
+            at ($(current page.south)+(0,1.5mm)$)
+            {\fjs@event};
+
+        \node[anchor=east, text=white, font=\scriptsize]
+            at ($(current page.south east)+(-2mm,1.5mm)$)
+            {\insertframenumber};
+    \end{tikzpicture}
+}
+
+% No navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% ==========================================================
+% End of style file
+% ==========================================================
