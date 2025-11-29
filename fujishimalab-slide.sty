@@ -163,12 +163,13 @@
 % ==========================================================
 % (C) 数式の上下余白を詰める（全frameに確実に反映）
 % ==========================================================
-\AtBeginEnvironment{frame}{%
+\makeatletter
+\apptocmd{\normalsize}{%
   \setlength{\abovedisplayskip}{6pt}%
   \setlength{\belowdisplayskip}{6pt}%
   \setlength{\abovedisplayshortskip}{4pt}%
   \setlength{\belowdisplayshortskip}{4pt}%
-}
+}{}{}
 
 \makeatother
 
@@ -179,6 +180,7 @@
 % ==========================================================
 % End of style file
 % ==========================================================
+
 
 
 
