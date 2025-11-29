@@ -150,12 +150,6 @@
 % ---------------------------
 \addtobeamertemplate{frametitle}{}{\vspace*{-1em}}
 
-% ---------------------------
-% (B) itemize 第二階層のマーク・フォント設定
-% ---------------------------
-% subitem のマークを "--" に変更
-\setbeamertemplate{itemize subitem}{--}
-
 % 第二階層 itemize を footnotesize に自動変更
 \usepackage{etoolbox}
 \AtBeginEnvironment{itemize}{%
@@ -166,6 +160,14 @@
 
 \makeatother
 
+% ==========================================================
+% 数式の上下余白を詰める（beamer既定の16pt→6pt）
+% ==========================================================
+\setlength{\abovedisplayskip}{6pt}
+\setlength{\belowdisplayskip}{6pt}
+\setlength{\abovedisplayshortskip}{4pt}
+\setlength{\belowdisplayshortskip}{4pt}
+
 % ============================================================
 % End of patch
 % ============================================================
@@ -173,3 +175,4 @@
 % ==========================================================
 % End of style file
 % ==========================================================
+
