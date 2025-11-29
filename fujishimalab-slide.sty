@@ -150,7 +150,9 @@
 % ---------------------------
 \addtobeamertemplate{frametitle}{}{\vspace*{-1em}}
 
-% 第二階層 itemize を footnotesize に自動変更
+% ---------------------------
+% (B) itemize 第二階層のマーク・フォント設定
+% ---------------------------
 \usepackage{etoolbox}
 \AtBeginEnvironment{itemize}{%
   \ifnum\@itemdepth=2
@@ -159,15 +161,14 @@
 }
 
 % ==========================================================
-% 数式の上下余白を詰める（beamer環境にも確実に反映）
+% (C) 数式の上下余白を詰める（全frameに確実に反映）
 % ==========================================================
-\makeatletter
-\addtobeamertemplate{block begin}{%
+\AtBeginEnvironment{frame}{%
   \setlength{\abovedisplayskip}{6pt}%
   \setlength{\belowdisplayskip}{6pt}%
   \setlength{\abovedisplayshortskip}{4pt}%
   \setlength{\belowdisplayshortskip}{4pt}%
-}{}
+}
 
 \makeatother
 
@@ -178,5 +179,6 @@
 % ==========================================================
 % End of style file
 % ==========================================================
+
 
 
