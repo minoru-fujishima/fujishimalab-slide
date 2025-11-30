@@ -172,17 +172,18 @@
   % --- disable all decorations for chapter slide ---
   \setbeamertemplate{headline}{}
   \setbeamertemplate{footline}{}
-  \setbeamertemplate{frametitle}{}   % ← ここは frame の外で OK
+  \setbeamertemplate{frametitle}{}
+
+  % ★ title page template を空に上書き（最重要）
+  \setbeamertemplate{title page}{}
 
   \begin{frame}[plain]
 
     \vspace*{22mm}
-
     {\centering\Huge\bfseries #1\par}
-
     \vspace*{12mm}
 
-    % optional green bar
+    % custom green bar (optional)
     \begin{tikzpicture}[remember picture, overlay]
       \fill[hiroshimaGreen]
         ($(current page.west)+(0,-4mm)$)
@@ -195,10 +196,10 @@
   \endgroup
 }
 
-
 % ==========================================================
 % End of style file
 % ==========================================================
+
 
 
 
