@@ -165,28 +165,24 @@
 % ==========================================================
 \newcommand{\fjschapterslide}[1]{%
   {
-    % ---- Disable header/footer/frametitle safely ----
     \begingroup
     \setbeamertemplate{headline}{}
     \setbeamertemplate{footline}{}
-    \setbeamertemplate{frametitle}{}
+    \setbeamertemplate{frametitle}{}  % ←これが決定的に重要
 
     \begin{frame}[plain]
-        \vspace*{18mm}
-
+        \vspace*{22mm}
         {\centering\Huge\bfseries #1\par}
+        \vspace*{12mm}
 
-        \vspace{10mm}
-
-        % Optional section bar (only if desired)
+        % optional green bar
         \begin{tikzpicture}[remember picture, overlay]
             \fill[hiroshimaGreen]
-                ($(current page.west)+(0,-3mm)$)
+                ($(current page.west)+(0,-4mm)$)
                 rectangle
-                ($(current page.east)+(0,0mm)$);
+                ($(current page.east)+(0,-1mm)$);
         \end{tikzpicture}
 
-        \vspace*{40mm}
     \end{frame}
 
     \endgroup
@@ -196,5 +192,6 @@
 % ==========================================================
 % End of style file
 % ==========================================================
+
 
 
