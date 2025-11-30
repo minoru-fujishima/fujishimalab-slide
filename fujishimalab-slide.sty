@@ -163,9 +163,6 @@
 % ==========================================================
 % Chapter Slide Template (Section Divider)
 % ==========================================================
-% ==========================================================
-% Chapter Slide Template (Section Divider)
-% ==========================================================
 \newcommand{\fjschapterslide}[1]{%
   \begingroup
 
@@ -173,32 +170,27 @@
   \setbeamertemplate{headline}{}
   \setbeamertemplate{footline}{}
   \setbeamertemplate{frametitle}{}
-
-  % ★ title page template を空に上書き（最重要）
-  \setbeamertemplate{title page}{}
+  \setbeamertemplate{title page}{}   % 念のためタイトルテンプレも無効化
 
   \begin{frame}[plain]
 
-    \vspace*{22mm}
-    {\centering\Huge\bfseries #1\par}
-    \vspace*{12mm}
+    \vspace*{25mm}
 
-    % custom green bar (optional)
-    \begin{tikzpicture}[remember picture, overlay]
-      \fill[hiroshimaGreen]
-        ($(current page.west)+(0,-4mm)$)
-        rectangle
-        ($(current page.east)+(0,-1mm)$);
-    \end{tikzpicture}
+    {\centering\Huge\bfseries #1\par}
+
+    % ★ 緑バーなし（完全に無効化）
+    % （何も描かない）
 
   \end{frame}
 
   \endgroup
 }
 
+
 % ==========================================================
 % End of style file
 % ==========================================================
+
 
 
 
