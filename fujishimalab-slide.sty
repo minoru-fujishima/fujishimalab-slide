@@ -163,36 +163,43 @@
 % ==========================================================
 % Chapter Slide Template (Section Divider)
 % ==========================================================
+% ==========================================================
+% Chapter Slide Template (Section Divider)
+% ==========================================================
 \newcommand{\fjschapterslide}[1]{%
-{
-    \begingroup
-    % --- disable all automatic decorations inside this slide ---
-    \setbeamertemplate{headline}{}
-    \setbeamertemplate{footline}{}
-    \setbeamertemplate{frametitle}{}     % ←★これが決定的に重要
+  \begingroup
 
-    \begin{frame}[plain]
+  % --- disable all decorations for chapter slide ---
+  \setbeamertemplate{headline}{}
+  \setbeamertemplate{footline}{}
+  \setbeamertemplate{frametitle}{}   % ← ここは frame の外で OK
 
-        \vspace*{20mm}
-        {\centering\Huge\bfseries #1\par}
+  \begin{frame}[plain]
 
-        % 緑バー（絶対座標で描く）
-        \vspace{6mm}
-        \begin{tikzpicture}[remember picture, overlay]
-            \fill[hiroshimaGreen]
-                ($(current page.west)+(0, -35mm)$)
-                rectangle
-                ($(current page.east)+(0, -32mm)$);
-        \end{tikzpicture}
+    \vspace*{22mm}
 
-        \vspace*{40mm}
-    \end{frame}
-    \endgroup
-}}
+    {\centering\Huge\bfseries #1\par}
+
+    \vspace*{12mm}
+
+    % optional green bar
+    \begin{tikzpicture}[remember picture, overlay]
+      \fill[hiroshimaGreen]
+        ($(current page.west)+(0,-4mm)$)
+        rectangle
+        ($(current page.east)+(0,-1mm)$);
+    \end{tikzpicture}
+
+  \end{frame}
+
+  \endgroup
+}
+
 
 % ==========================================================
 % End of style file
 % ==========================================================
+
 
 
 
