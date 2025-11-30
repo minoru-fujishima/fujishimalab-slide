@@ -166,22 +166,27 @@
 \newcommand{\fjschapterslide}[1]{%
   {
     \begingroup
+    % disable all automatic beamer decorations
     \setbeamertemplate{headline}{}
     \setbeamertemplate{footline}{}
-    \setbeamertemplate{frametitle}{}  % ←これが決定的に重要
+    \setbeamertemplate{frametitle}{}
 
     \begin{frame}[plain]
-        \vspace*{22mm}
-        {\centering\Huge\bfseries #1\par}
-        \vspace*{12mm}
 
-        % optional green bar
+        % ===== Title (centered) =====
+        \vspace*{20mm}
+        {\centering\Huge\bfseries #1\par}
+
+        % ===== Green bar (absolute position, right under the title) =====
+        \vspace{6mm}
         \begin{tikzpicture}[remember picture, overlay]
             \fill[hiroshimaGreen]
-                ($(current page.west)+(0,-4mm)$)
+                ($(current page.center)-(0,25mm)$)  % ← 画面中央からの絶対座標
                 rectangle
-                ($(current page.east)+(0,-1mm)$);
+                ($(current page.center)-(0,-28mm)$);
         \end{tikzpicture}
+
+        \vspace*{40mm}
 
     \end{frame}
 
@@ -192,6 +197,7 @@
 % ==========================================================
 % End of style file
 % ==========================================================
+
 
 
 
