@@ -164,39 +164,36 @@
 % Chapter Slide Template (Section Divider)
 % ==========================================================
 \newcommand{\fjschapterslide}[1]{%
-  {
+{
     \begingroup
-    % disable all automatic beamer decorations
+    % --- disable all automatic decorations inside this slide ---
     \setbeamertemplate{headline}{}
     \setbeamertemplate{footline}{}
-    \setbeamertemplate{frametitle}{}
+    \setbeamertemplate{frametitle}{}     % ←★これが決定的に重要
 
     \begin{frame}[plain]
 
-        % ===== Title (centered) =====
         \vspace*{20mm}
         {\centering\Huge\bfseries #1\par}
 
-        % ===== Green bar (absolute position, right under the title) =====
+        % 緑バー（絶対座標で描く）
         \vspace{6mm}
         \begin{tikzpicture}[remember picture, overlay]
             \fill[hiroshimaGreen]
-                ($(current page.center)-(0,25mm)$)  % ← 画面中央からの絶対座標
+                ($(current page.west)+(0, -35mm)$)
                 rectangle
-                ($(current page.center)-(0,-28mm)$);
+                ($(current page.east)+(0, -32mm)$);
         \end{tikzpicture}
 
         \vspace*{40mm}
-
     \end{frame}
-
     \endgroup
-  }
-}
+}}
 
 % ==========================================================
 % End of style file
 % ==========================================================
+
 
 
 
