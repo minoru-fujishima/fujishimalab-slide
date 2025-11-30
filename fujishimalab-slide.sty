@@ -160,35 +160,44 @@
 
 \makeatother
 
-% ============================================================
-% Fujishima Lab Chapter Slide （★今回追加部分★）
-% ============================================================
-
-% 章スライドコマンド
-\newcommand{\fjschapterslide}[2][]{%
-  % #1 optional subtitle
-  % #2 main title
+% ==========================================================
+% Chapter Slide Template (Section Divider)
+% ==========================================================
+\newcommand{\fjschapterslide}[1]{%
   {
-  \setbeamertemplate{headline}{}
-  \setbeamertemplate{footline}{}
+    % ---- Disable header/footer temporarily ----
+    \begingroup
+    \setbeamertemplate{headline}{}
+    \setbeamertemplate{footline}{}
 
-  \begin{frame}[plain]
-    \centering
-    \vspace*{6em}
+    \begin{frame}[plain]
+        \vspace*{18mm}
 
-    {\LARGE\bfseries #2\par}
+        {\centering\Huge\bfseries #1\par}
 
-    \vspace{1.0em}
+        \vspace{10mm}
 
-    {\large #1\par}
+        % Blue + Green double bar (same design as frametitle)
+        \begin{tikzpicture}[remember picture, overlay]
+            \fill[hiroshimaBlue]
+                ($(current page.west)+(0,-3mm)$)
+                rectangle
+                ($(current page.east)+(0,0mm)$);
 
-    \vspace{2em}
-    \rule{0.55\linewidth}{0.6pt}
+            \fill[hiroshimaGreen]
+                ($(current page.west)+(0,-6mm)$)
+                rectangle
+                ($(current page.east)+(0,-3mm)$);
+        \end{tikzpicture}
 
-  \end{frame}
+        \vspace*{40mm}
+    \end{frame}
+
+    \endgroup
   }
 }
 
 % ==========================================================
 % End of style file
 % ==========================================================
+
